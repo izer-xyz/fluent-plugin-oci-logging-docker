@@ -22,6 +22,8 @@ services:
 
   fluentd:
     image: ghcr.io/izer-xyz/oci-logger:latest
+    environment:
+      - ORACLE_LOG_OBJECT_ID=ocid.log....
     ports:
       - "127.0.0.1::24224"
       - "120.0.0.1::24224/udp"
