@@ -2,8 +2,8 @@ FROM fluent/fluentd
 
 USER root
 
-RUN sudo gem install fluent-plugin-oci-logging \
- && sudo gem sources --clear-all \
+RUN gem install fluent-plugin-oci-logging \
+ && gem sources --clear-all \
  && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 
 COPY fluent.conf /fluentd/etc/
