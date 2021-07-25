@@ -12,6 +12,8 @@ version: "3"
 services:
   something:
     image: something
+    depends_on:
+      - fluentd
     ports:
       - "80:80"
     logging:
