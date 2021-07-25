@@ -16,6 +16,9 @@ services:
       - "80:80"
     logging:
       driver: "fluentd"
+      options:
+        fluentd-async: "true"
+        
 
   fluentd:
     image: ghcr.io/izer-xyz/oci-logger:latest
