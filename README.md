@@ -9,24 +9,25 @@ Fluentd Docker container with OCI output plugin
 Sample docker-compose.yml:
 ```
 version: "3"
+
 services:
   something:
     image: something
     depends_on:
       - fluentd
-    ports:
-      - "80:80"
     logging:
-      driver: "fluentd"
+      driver: fluentd
       options:
         fluentd-async: "true"
-        
+        fluentd-address: 127.0.0.1:24224 
 
   fluentd:
     image: ghcr.io/izer-xyz/oci-logger:latest
     environment:
       - ORACLE_LOG_OBJECT_ID=ocid.log....
+    volumes:
+      - /etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
     ports:
-      - "127.0.0.1::24224"
-      - "120.0.0.1::24224/udp"
+      - "127.0.0.1:24224:24224"
+      - "127.0.0.1:24224:24224/udp"
  ```
