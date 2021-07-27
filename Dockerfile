@@ -18,6 +18,6 @@ RUN buildDeps="sudo make gcc g++ libc-dev" \
 COPY fluent.conf /fluentd/etc/
 #COPY entrypoint.sh /bin/
 
-USER fluent
+#USER fluent
 
 EXPOSE 127.0.0.1::24224
