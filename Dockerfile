@@ -14,10 +14,15 @@ RUN buildDeps="sudo make gcc g++ libc-dev" \
                   $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
+ 
+RUN mkdir -p /var/log/journal \
+ && chown fluent:fluent /var/log/journal \
+ && addgroup -o -gid 190 systemd-journal \ # this assumes host GID 190 for journal access
+ && usermod -a -G systemd-journal fluent 
 
 COPY fluent.conf /fluentd/etc/
 #COPY entrypoint.sh /bin/
 
-#USER fluent
+USER fluent
 
 EXPOSE 127.0.0.1::24224
