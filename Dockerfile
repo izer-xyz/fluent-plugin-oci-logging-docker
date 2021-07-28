@@ -18,7 +18,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev" \
 # this assumes host GID 190 for journal access
 RUN mkdir -p /var/log/journal \
  && chown fluent:fluent /var/log/journal \
- && addgroup -o -gid 190 systemd-journal \
+ && addgroup -gid 190 systemd-journal \
  && usermod -a -G systemd-journal fluent 
 
 COPY fluent.conf /fluentd/etc/
