@@ -7,6 +7,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev" \
  && apt-get install -y --no-install-recommends $buildDeps \
  && gem install fluent-plugin-oci-logging \
  && gem install fluent-plugin-systemd \
+ && gem install fluent-plugin-parser-logfmt \
  && sudo gem sources --clear-all \
  && SUDO_FORCE_REMOVE=yes \
     apt-get purge -y --auto-remove \
